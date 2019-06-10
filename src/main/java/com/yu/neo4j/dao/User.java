@@ -4,6 +4,8 @@ import org.neo4j.ogm.annotation.GeneratedValue;
 import org.neo4j.ogm.annotation.Id;
 import org.neo4j.ogm.annotation.NodeEntity;
 
+import java.io.Serializable;
+
 /**
  * 使用 neo4j 数据库实体类需要添加一些必要的注解
  * @NodeEntity:标签名  相当于mysql中的表名 这个标签名必须要和数据库中标签名匹配，实体类的名字可以不一致但是建议写成一致
@@ -15,22 +17,22 @@ import org.neo4j.ogm.annotation.NodeEntity;
  * 如果有get方法就放在get方法上
  */
 @NodeEntity(label = "User")
-public class User  {
+public class User  implements Serializable {
     @Id
     @GeneratedValue
-    private  long id;
+    private  Long id;
     private  String userNo;
     private  String userName;
     private  String userPassword;
     private  String department;
-    private  double salary;
+    private  Double salary;
     private  String position;
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -66,11 +68,11 @@ public class User  {
         this.department = department;
     }
 
-    public double getSalary() {
+    public Double getSalary() {
         return salary;
     }
 
-    public void setSalary(double salary) {
+    public void setSalary(Double salary) {
         this.salary = salary;
     }
 

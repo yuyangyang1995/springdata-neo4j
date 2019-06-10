@@ -9,17 +9,17 @@ import org.neo4j.ogm.annotation.NodeEntity;
 public class Department {
     @Id
     @GeneratedValue
-    private  long  id;
+    private  Long  id;
     private  String departmentNo;
     private  String departmentName;
     private  String departmentLender;
     private  String departmentNumber;
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

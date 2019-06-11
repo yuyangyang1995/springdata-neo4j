@@ -48,4 +48,21 @@ public class UserServiceImpl implements UserService {
     public User save(User user) {
       return   userRepos.save(user);
     }
+
+    @Override
+    public void updateUsernameByUserNo(User user) {
+        userRepos.updateUsernameByUserNo(user.getUserNo(),user.getUserName(),user.getPosition(),
+                user.getUserPassword(),user.getSalary(),user.getDepartment());
+    }
+
+    @Override
+    public void deleteByUserNo(String userNo) {
+        if (userNo.equals("214")){
+            userRepos.deleteUserNo(userNo);
+            System.out.println("编码是214");
+        }else {
+            userRepos.deleteByUserNo(userNo);
+        }
+
+    }
 }

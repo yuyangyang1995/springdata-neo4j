@@ -51,4 +51,15 @@ public class UserController {
     public  User findbyUserNameAndUserNo(String userName,String userNo){
         return  userService.findbyUserNameAndUserNo(userName,userNo);
     }
+
+    @RequestMapping(value = "updateUsernameByUserNo",method = RequestMethod.GET)
+    @ApiOperation(value = "根据用户编号修改用户名",notes = "根据用户编号修改用户名")
+    public void updateUsernameByUserNo (User user){
+        userService.updateUsernameByUserNo(user);
+    }
+    @RequestMapping(value = "deleteByUserNo",method = RequestMethod.GET)
+    @ApiOperation(value = "根据用户编码删除用户节点",notes = "根据用户编码删除用户节点")
+    public  void deleteByUserNo(String userNo){
+        userService.deleteByUserNo(userNo);
+    }
 }

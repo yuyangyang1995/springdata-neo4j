@@ -13,4 +13,6 @@ public interface UserService {
     List<User> findUsersByDepartmentaAndUserNo(String department,String userNo);
     User findbyUserNameAndUserNo(String userName,String userNo);
     User  save(User user);
+    void  updateUsernameByUserNo(User user);
+    void  deleteByUserNo (String userNo);
 }

@@ -65,4 +65,19 @@ public class UserServiceImpl implements UserService {
         }
 
     }
+
+    @Override
+    public void createUserFriend(String userName, String userNames) {
+        userRepos.createUserFriend(userName,userNames);
+    }
+
+    @Override
+    public void createUserRelation(String userName, String userNames, String relation,String name,String num) {
+        userRepos.createUserRelation(userName, userNames, relation,name,num);
+    }
+
+    @Override
+    public void createUserDepartRelation(String userName, String departmentName, String name, String num, String price) {
+        userRepos.createUserDepartRelation(userName, departmentName, name, num, price);
+    }
 }

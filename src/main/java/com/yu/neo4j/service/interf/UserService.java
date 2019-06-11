@@ -15,4 +15,8 @@ public interface UserService {
     User  save(User user);
     void  updateUsernameByUserNo(User user);
     void  deleteByUserNo (String userNo);
+    void createUserFriend(String userName,String userNames);
+    void createUserRelation(String userName,String userNames,String relation,String name,String num);
+    void createUserDepartRelation(String userName,String departmentName,
+                                 String name,String num,String price);
 }

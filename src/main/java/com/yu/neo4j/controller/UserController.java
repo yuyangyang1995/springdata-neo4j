@@ -62,4 +62,21 @@ public class UserController {
     public  void deleteByUserNo(String userNo){
         userService.deleteByUserNo(userNo);
     }
+    @RequestMapping(value = "createUserFriend",method = RequestMethod.GET)
+    @ApiOperation(value = "通过不同的用户名字来创建关系",notes = "通过不同的用户名字来创建关系")
+    public void createUserFriend (String userName,String userNames){
+        userService.createUserFriend(userName,userNames);
+    }
+
+    @RequestMapping(value = "createUserRelation",method = RequestMethod.GET)
+    @ApiOperation(value = "通过不同的用户名字来创建不同关系",notes = "通过不同的用户名字来创建不同关系")
+    public void createUserRelation (String userName,String userNames,String relation,String name,String num){
+        userService.createUserRelation(userName,userNames,relation,name,num);
+    }
+
+    @RequestMapping(value = "createUserDepartRelation",method = RequestMethod.GET)
+    @ApiOperation(value = "创建两个不同标签的节点的关系",notes = "创建两个不同标签的节点的关系")
+    public void createUserDepartRelation (String userName, String departmentName, String name, String num, String price){
+        userService.createUserDepartRelation(userName, departmentName, name, num, price);
+    }
 }

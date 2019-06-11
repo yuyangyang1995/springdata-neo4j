@@ -52,4 +52,20 @@ public interface UserRepos extends Neo4jRepository<User,Long> {
      */
     @Query("match (u:User) where u.userNo={userNo} delete u")
     void deleteUserNo(@Param("userNo")String userNo);
+
+    /**
+     * 创建用户之间的关系
+     */
+    @Query("MATCH (u:User),(s:User) where u.userName={userName}and s.userName={userNames} create (u)-[:friend]->(s)")
+    void createUserFriend(@Param("userName")String userName,@Param("userNames")String userNames);
+
+    @Query("MATCH (u:User),(s:User) where u.userName={userName}and s.userName={userNames} create (u)-[:relation{relation:{relation},name:{name},num:{num}}]->(s)")
+    void createUserRelation(@Param("userName")String userName,@Param("userNames")String userNames,
+                            @Param("relation") String relation,@Param("name")String name,@Param("num")String num);
+    /**
+     * 创建两个不同对象的关系
+     */
+    @Query("MATCH (u:User),(d:Department) WHERE u.userName={userName}and d.departmentName={departmentName} create (u)-[:relation{name:{name},num:{num},price:{price}}]->(d)")
+    void createUserDepartRelation(@Param("userName")String userName,@Param("departmentName")String departmentName,
+                                  @Param("name") String name,@Param("num")String num,@Param("price")String price);
 }

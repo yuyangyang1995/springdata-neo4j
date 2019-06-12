@@ -19,4 +19,7 @@ public interface UserService {
     void createUserRelation(String userName,String userNames,String relation,String name,String num);
     void createUserDepartRelation(String userName,String departmentName,
                                  String name,String num,String price);
+    List<User> findUserLikeUsername(String userName);
+    void craeteRelationByIdAndName( Long id,String departmentName,String name, String time);
+    User getUserByUserNameAndRelation(String userName,String name);
 }

@@ -79,4 +79,22 @@ public class UserController {
     public void createUserDepartRelation (String userName, String departmentName, String name, String num, String price){
         userService.createUserDepartRelation(userName, departmentName, name, num, price);
     }
+
+    @RequestMapping(value = "findUserLikeUsername",method = RequestMethod.GET)
+    @ApiOperation(value = "根据用户名模糊查询用户",notes = "根据用户名模糊查询用户")
+    public  List<User> findUserLikeUsername(String userName){
+      return   userService.findUserLikeUsername(userName);
+    }
+
+    @RequestMapping(value = "craeteRelationByIdAndName",method = RequestMethod.GET)
+    @ApiOperation(value = "通过用户id和部门名来创建关系",notes = "通过用户id和部门名来创建关系")
+    public  void craeteRelationByIdAndName( Long id,String departmentName,String name, String time){
+        userService.craeteRelationByIdAndName(id, departmentName, name, time);
+    }
+
+    @RequestMapping(value = "getUserByUserNameAndRelation",method = RequestMethod.GET)
+    @ApiOperation(value = "根据用户名以及关系确定用户",notes = "根据用户名以及关系确定用户")
+    public  User getUserByUserNameAndRelation (String userName,String name){
+        return userService.getUserByUserNameAndRelation(userName, name);
+    }
 }

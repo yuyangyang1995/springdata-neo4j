@@ -68,4 +68,26 @@ public interface UserRepos extends Neo4jRepository<User,Long> {
     @Query("MATCH (u:User),(d:Department) WHERE u.userName={userName}and d.departmentName={departmentName} create (u)-[:relation{name:{name},num:{num},price:{price}}]->(d)")
     void createUserDepartRelation(@Param("userName")String userName,@Param("departmentName")String departmentName,
                                   @Param("name") String name,@Param("num")String num,@Param("price")String price);
+
+    /**
+     *  模糊查询（封装方法版）
+     */
+    List<User> findUsersByUserNameIsLike(@Param("userName") String userName);
+    /**
+     * 模糊查询（注解版）
+     */
+     @Query("match(u:User) where u.userName =~{userName} return u")
+     List<User> findUserLikeUsername(@Param("userName")String userName);
+    /**
+     * 根据用户id和部门名字创建关系
+     */
+     @Query("MATCH (u:User),(d:Department) WHERE id(u)={id}and d.departmentName={departmentName} create (u)-[:relation{name:{name},time:{time}}]->(d)")
+     void craeteRelationByIdAndName(@Param("id") Long id,@Param("departmentName") String departmentName,
+                                    @Param("name") String name,@Param("time") String time);
+
+    /**
+     * 通过关系与用户名字确定用户信息
+     */
+     @Query("match (u:User)-[r:relation]->(d:Department) where u.userName=~{userName} and r.name={name} return u")
+     User getUserByUserNameAndRelation(@Param("userName")String userName,@Param("name")String name);
 }

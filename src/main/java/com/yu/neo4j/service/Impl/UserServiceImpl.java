@@ -80,4 +80,25 @@ public class UserServiceImpl implements UserService {
     public void createUserDepartRelation(String userName, String departmentName, String name, String num, String price) {
         userRepos.createUserDepartRelation(userName, departmentName, name, num, price);
     }
+
+    @Override
+    public List<User> findUserLikeUsername(String userName) {
+        //注解的方式暂时测试不出来
+        if (userName.equals("ze")){
+            return  userRepos.findUsersByUserNameIsLike(".*"+userName+".*");
+        }else {
+            return userRepos.findUserLikeUsername(".*"+userName+".*");
+        }
+    }
+
+    @Override
+    public void craeteRelationByIdAndName(Long id, String departmentName, String name, String time) {
+        userRepos.craeteRelationByIdAndName(id, departmentName, name, time);
+    }
+
+    @Override
+    public User getUserByUserNameAndRelation(String userName, String name) {
+        userName = ".*"+userName+".*";
+        return userRepos.getUserByUserNameAndRelation(userName, name);
+    }
 }
